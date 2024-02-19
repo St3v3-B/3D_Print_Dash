@@ -1,0 +1,154 @@
+/* Basis reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #121212; /* Donkere achtergrond */
+  color: #e0e0e0; /* Lichte tekstkleur */
+  padding: 20px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  zoom: 150%;
+  overflow: hidden;
+}
+
+.printer-status {
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px; /* Zorgt voor ruimte tussen de blokken als je meerdere hebt */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3); /* Voegt schaduw toe voor diepte */
+  transition: box-shadow 0.3s ease, transform 0.2s ease; /* Smooth transition voor hover effect */
+}
+
+.printer-status h2 {
+  color: #bb86fc; /* Accentkleur voor titels */
+  margin-bottom: 20px;
+}
+
+.progress-container {
+  width: 100%;
+  background-color: #333;
+  border-radius: 5px;
+  margin: 20px 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.progress-bar {
+  height: 20px;
+  background: linear-gradient(to left, #4caf50, #2196F3);
+  width: 0%;
+  border-radius: 5px;
+  transition: width 0.5s ease-in-out;
+  animation: laadProgress 2s ease-in-out forwards;
+  
+  /* Centreer tekst */
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center content horizontally */
+}
+
+@keyframes laadProgress {
+  from { width: 0%; }
+  /* De 'to' wordt dynamisch gespecificeerd via inline CSS */
+}
+
+.status-details {
+  margin-top: 20px;
+}
+
+.status-details p {
+  margin-bottom: 10px;
+}
+
+.status-details span {
+  font-weight: bold;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto 20px;
+}
+
+.printer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px; /* Ruimte tussen de blokken */
+  margin: 0 auto;
+  max-width: 1200px; /* Max breedte van de container */
+  padding: 20px;
+}
+
+.klok {
+  font-family: 'Roboto', sans-serif;
+  font-size: 60px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 20px 0;
+  margin-top: 0px;
+  color: #bb86fc; /* begin kleur */
+  animation: kleurVerandering 15s infinite linear;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+@media screen and (max-width: 768px) {
+  .klok {
+    font-size: 48px; /* Aanpassen voor kleinere schermen */
+  }
+  
+  .printer-container {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+
+.printer-status:hover {
+  transform: translateY(-2px); /* Subtiel omhoog bewegen */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes kleurVerandering {
+  0% {color: #e74c3c;} /* Rood */
+  25% {color: #2ecc71;} /* Groen */
+  50% {color: #3498db;} /* Blauw */
+  75% {color: #f39c12;} /* Oranje */
+  100% {color: #e74c3c;} /* Terug naar Rood */
+}
+
+.status-vrij {
+  color: #3498db; /* Blauw */
+
+}
+
+.status-klaar {
+color: #2ecc71; /* Groen */
+}
+
+.status-bezig {
+color: #e74c3c; /* Rood */
+}
+@keyframes spring {
+  0%, 95%, 100% {
+    transform: translateY(0);
+  }
+  97.5% {
+    transform: translateY(-10px);
+  }
+}
+
+.printer-status {
+  /* Basisstijl */
+  margin: 10px;
+  padding: 10px;
+  /* Hier definiëren we dat de animatie over een periode van 10s afspeelt, oneindig herhaald */
+  animation: spring 10s infinite;
+  /* De 'animation-delay' wordt dynamisch toegevoegd via PHP, dus is niet nodig om hier te specificeren */
+}
